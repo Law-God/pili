@@ -14,7 +14,7 @@ const jstImg = require("./images/jst.jpg");
 export default class Role extends Component{
 	render(){
 		return (
-			<main role="main">
+			<main role="main" className="main">
 				<article>
 					<section>
 						<img src={shzImg}/>

@@ -1,4 +1,4 @@
-import "../main.less";
+import styles from "../main.less";
 
 import React,{Component} from "react";
 import { Link } from 'react-router';
@@ -11,7 +11,7 @@ const xmjg2zmlImg = require("./images/xmjg2zmlImg.jpg");
 
 export default class Role extends Component{
 	render(){
-		const Elements = (<main role="main">
+		const Elements = (<main role="main" className={styles['main']}>
 			<article>
 				<section>
 					<Link to="/tv/detail"><img src={xmjg2zmlImg}/></Link>

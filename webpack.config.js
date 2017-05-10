@@ -66,19 +66,35 @@ module.exports={
 				]
 			},
 			{
+				
 				test : /\.(css|less)$/,
-						loader : ExtractTextPlugin.extract({
-									fallback : "style-loader",
-									use : ["css-loader?importLoaders=3","postcss-loader","less-loader"]
-								})
-				/*test: /.(css|less)$/,
-			      loader: ExtractTextPlugin.extract({
-			        fallbackLoader: 'style-loader',
-			        loader: 'css-loader!postcss-loader!less-loader'
-			      })*/
+				use : ExtractTextPlugin.extract({
+					fallback : "style-loader",
+					use : [
+						{
+							loader : "css-loader",
+							options: {
+				              modules: true,
+				              importLoaders: 1,
+				              localIdentName: '[hash:base64:5]'
+				           }
+						},
+						//解决css中url报错 Module not found: Error: Can't resolve 'images/footer-sprite.png'
+						{
+							loader : "resolve-url-loader"
+						},
+						{
+							loader : "postcss-loader"
+						},
+						{
+							loader : "less-loader"
+						}
+					]
+				})
 			},
 			{
 				test : /\.(?:jpg|jpeg|gif|png|svg|ico)$/,
+				exclude: '/node_modules/',
 				use : [
 					{
 						loader : "url-loader",
