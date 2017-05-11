@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/5/10.
  */
-import styles from "picturePlay.css";
+import styles from "./picturePlay.css";
 
 import React,{Component} from "react";
 

@@ -38,7 +38,8 @@ module.exports={
     },
 	entry : {
 		bundle : "./src/html/index.js",
-		lib : ["react","react-dom","react-router"]
+		lib : ["react","react-dom","react-router","jquery"],
+		// vendor : ["component/slideBox/jquery.slideBox"]
 	},
 	output : {
 		//path : "/" 绝对路径，在window中表示当前盘符，如D://; wepack命令后会自动增加目录dist
@@ -114,7 +115,9 @@ module.exports={
 				]
 			},
             {
+            	//得到jquery绝对路径
                 test: require.resolve('jquery'),
+                // 将jquery绑定为window.jQuery 和 window.$
                 use: [{
                     loader: 'expose-loader',
                     options: 'jQuery'
@@ -153,7 +156,10 @@ module.exports={
 	},*/
 	plugins : [
 		new CleanWebpackPlugin([outputdir]),
-		/*new webpack.optimize.CommonsChunkPlugin('common'),*/
+		/*new webpack.optimize.CommonsChunkPlugin({
+			names: ['vendor'],
+            //names: ['vendor', 'manifest'],
+        }),*/
 		new ExtractTextPlugin({
             filename : __DEV__ ? "bundle.css" : "bundle[contenthash:8].css",
             allChunks: true
