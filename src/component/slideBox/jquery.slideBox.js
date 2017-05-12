@@ -19,7 +19,7 @@
 			delay : 3,//unit:seconds
 			startIndex : 0,
 			hideClickBar : true,
-			clickBarRadius : 5,//unit:px
+			clickBarRadius : 50,//unit:px
 			hideBottomBar : false,
 			width : null,
 			height : null
@@ -27,12 +27,12 @@
 		var settings = $.extend(defaults, options || {});
 		//计算相关数据
 		var wrapper = $(this), ul = wrapper.children('ul.items'), lis = ul.find('li'), firstPic = lis.first().find('img');
-		var li_num = lis.size(), li_height = 0, li_width = 0;
+		var li_num = lis.length, li_height = 0, li_width = 0;
 		//定义滚动顺序:ASC/DESC.ADD.JENA.201208081718
 		var order_by = 'ASC';
 		//初始化
 		var init = function(){
-			if(!wrapper.size()) return false;
+			if(!wrapper.length) return false;
 			//手动设定值优先.ADD.JENA.201303141309
 			li_height = settings.height ? settings.height : lis.first().height();
 			li_width = settings.width ? settings.width : lis.first().width();
@@ -77,7 +77,7 @@
 				}
 			}
 			
-			lis.size()>1 && start();
+			lis.length>1 && start();
 		}
 		//开始轮播
 		var start = function() {
@@ -97,14 +97,14 @@
 			ul.stop().animate(param, settings.duration*1000, settings.easing, function() {
 				active.removeClass('active');
 				if(order_by=='ASC'){
-					if (active.next().size()){
+					if (active.next().length){
 						active.next().addClass('active');
 					}else{
 						order_by = 'DESC';
 						active.prev().addClass('active');
 					}
 				}else if(order_by=='DESC'){
-					if (active.prev().size()){
+					if (active.prev().length){
 						active.prev().addClass('active');
 					}else{
 						order_by = 'ASC';

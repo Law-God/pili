@@ -41,6 +41,3 @@ render(
 		</Router>
 	),document.getElementById("body")
 );
-
-
-$('#demo1').slideBox();

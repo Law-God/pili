@@ -68,7 +68,7 @@ module.exports={
 			},
 			{
 				
-				test : /\.(css|less)$/,
+				test : /\.(less)$/,
 				use : ExtractTextPlugin.extract({
 					fallback : "style-loader",
 					use : [
@@ -89,6 +89,23 @@ module.exports={
 						},
 						{
 							loader : "less-loader"
+						}
+					]
+				})
+			},
+			{
+				
+				test : /\.(css)$/,
+				use : ExtractTextPlugin.extract({
+					fallback : "style-loader",
+					use : [
+						{
+							loader : "css-loader",
+							options: {
+				              modules: false,
+				              importLoaders: 1,
+				              //localIdentName: '[hash:base64:5]'
+				           }
 						}
 					]
 				})
