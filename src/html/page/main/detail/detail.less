@@ -63,6 +63,52 @@
 	}
 }
 
+.base-info{
+	padding: 20px;
+	.base-flex-container(@flex-flow:row,@justify-content:flex-start,@align-items:stretch,@align-content:space-around);
+	section{
+		width:50%;
+	}
+	.baseInfo-item{
+		float:left;
+	}
+	.name{
+		width:20%;
+		color:#999;
+		text-indent:1em;
+	}
+	.value{
+		width:80%;
+	}
+}
 
+h2{
+	font-weight: normal;
+}
 
+.tip{
+	padding: 10px 0 0 20px;
+}
+.headline{
+	border-left:solid 12px #4F9CEE;
+}
 
+.content{
+	padding: 20px;
+	text-indent:2em;
+}
+
+.roleInfo{
+	h3{
+		font-weight: normal;
+	}
+	section{
+		padding: 20px;
+	}
+	article{
+		.base-flex-container(@flex-flow:row,@justify-content:flex-start,@align-items:stretch,@align-content:space-around);
+	}
+	article div:nth-child(2){
+		margin-left:20px;
+	}
+}
