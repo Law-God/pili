@@ -3,6 +3,8 @@
  */
 import React,{Component} from 'react';
 
+var $ = require("jquery");
+
 class PagingBar extends Component{
     render(){
         var pagingOptions = {
@@ -24,9 +26,9 @@ class PagingBar extends Component{
         return(
             <div className={pagingOptions.classNames}>
                 <PagingFirst {...pagingOptions} {...this.props}/>
-                <PagingBeforAfter isBefore="true" {...pagingOptions} {...this.props}/>
+                <PagingBeforeAfter isBefore="true" {...pagingOptions} {...this.props}/>
                 <PagingList {...pagingOptions} {...this.props}/>
-                <PagingBeforAfter isBefore="false" {...pagingOptions} {...this.props}/>
+                <PagingBeforeAfter isBefore="false" {...pagingOptions} {...this.props}/>
                 <PagingLast {...pagingOptions} {...this.props}/>
                 <PagingInfo {...pagingOptions} {...this.props}/>
             </div>
@@ -38,7 +40,7 @@ class PagingBar extends Component{
 class PagingFirst extends Component{
     render(){
         var ids = [];
-        let paging = this.props.item.get("paging");
+        let paging = this.props.items.get("Paging");
         var current = paging.get("PagingIndex");
         let pagingIndex = current - 1;
         if(paging.get("PagingIndex") != 1){
