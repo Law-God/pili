@@ -3,7 +3,7 @@ import styles from "../main.less";
 import React,{Component} from "react";
 import { Link } from 'react-router';
 
-import PagingBar from "component/pagingBar/paging-bar";
+import PagingBar from "component/pagingBar/paging-bar2";
 
 const xmjgImg = require("./images/xmjf.jpg");
 const gyzbImg = require("./images/gyzb.jpg");
