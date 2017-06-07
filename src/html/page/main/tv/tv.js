@@ -3,7 +3,7 @@ import styles from "../main.less";
 import React,{Component} from "react";
 import { Link } from 'react-router';
 
-import PagingBar from "component/pagingBar/paging-bar2";
+import PagingBar from "component/pagingBar/paging-bar";
 
 const xmjgImg = require("./images/xmjf.jpg");
 const gyzbImg = require("./images/gyzb.jpg");
@@ -80,7 +80,7 @@ export default class Role extends Component{
 					</dl>
 				</section>
 			</article>
-			<PagingBar></PagingBar>
+			<PagingBar total="20"></PagingBar>
 		</main>);
 		return (
 			<div>
