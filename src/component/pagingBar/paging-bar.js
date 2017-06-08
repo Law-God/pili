@@ -32,8 +32,8 @@ export default  class PagingBar extends Component {
         }
     }
     goPage() {
-        var val = this.stata.value;
-        if (/^[1-9]\d*$/.test(val)) {
+        var val = this.state.value;
+        if (!/^[1-9]\d*$/.test(val)) {
             alert('页码只能输入大于1的正整数');
         } else if (parseInt(val) > parseInt(this.props.total)) {
             alert('没有那么多页');
@@ -72,7 +72,7 @@ export default  class PagingBar extends Component {
         }
         return(
             <div className={styleLess['ui-pagnation']}>
-                <a className={this.state.current == 1 ? styleLess['prev']+ ' ' + styleLess['disable'] : styleLess['prev']} onClick={this.goPrev}></a>
+                <a className={this.state.current == 1 ? styleLess['prev']+ ' ' + styleLess['disable'] : styleLess['prev']} onClick={()=>this.goPrev()}></a>
                 <span className={styleLess['pagnation-cols']}>
                     {
                         items.map(function(item) {
@@ -81,10 +81,11 @@ export default  class PagingBar extends Component {
                         })
                     }
                 </span>
-                <a className={this.state.current == this.props.total ? styleLess['next'] + ' ' + styleLess['disable'] : styleLess['next']} onClick={this.goNext}></a>
+                <a className={this.state.current == this.props.total ? styleLess['next'] + ' ' + styleLess['disable'] : styleLess['next']} onClick={()=>this.goNext()}></a>
                 <div className={styleLess['f1']}>
-                    共<span className={styleLess['num-total']}>{total}</span>页，第<input type="text" value={self.state.value} onChange={this.goPage}/>页
+                    共<span className={styleLess['num-total']}>{total}</span>页，第<input type="text" value={this.state.value} onChange={this.handChange.bind(this)}/>页
                 </div>
+                <a onClick={()=>this.goPage()} className={styleLess['page-go']}>确定</a>
             </div>
         );
     }
